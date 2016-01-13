@@ -172,14 +172,10 @@ public class NewCookieHeaderProvider implements HeaderDelegate<NewCookie> {
         if (0 == len) {
             return true;
         }
-        if ('"' == value.charAt(0)) {
-            if ('"' == value.charAt(len - 1)) {
-                // already wrapped with quotes
-                return false;
-            }
-            // we now know this has a quote (special char) in it, so return now
-            return true;
-        }
+        if ('"' == value.charAt(0) & '"' == value.charAt(len - 1)) {
+            // already wrapped with quotes
+            return false;         
+        } 
 
         for (int i = 0; i < len; i++) {
             char c = value.charAt(i);
